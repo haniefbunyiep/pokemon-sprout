@@ -14,7 +14,7 @@ export default function Moves() {
   const moves = pokemonDetailData?.moves || [];
 
   return (
-    <div className='flex w-full flex-col gap-6 p-6'>
+    <div className='flex w-full flex-col gap-6 lg:p-6'>
       <div className='max-h-[400px] overflow-y-auto'>
         <div className='grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4'>
           {moves.map((move, index) => (

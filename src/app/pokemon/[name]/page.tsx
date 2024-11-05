@@ -27,7 +27,7 @@ export default function Pokemon() {
   const About = pokemonDetailData?.about;
 
   return (
-    <div className='flex w-fit flex-col gap-10 p-4'>
+    <div className='flex w-fit flex-col gap-10 lg:p-4'>
       {navContent.map((item) => (
         <div key={item.key} className='flex justify-between gap-20'>
           <div className='font-bold'>{item.label}:</div>

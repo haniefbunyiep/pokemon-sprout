@@ -1,4 +1,3 @@
-// slices/authSlice.ts
 import { StateCreator } from 'zustand';
 import { LoadingSlice } from '@/zustand/types';
 

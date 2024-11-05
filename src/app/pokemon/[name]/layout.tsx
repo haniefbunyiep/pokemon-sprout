@@ -54,7 +54,7 @@ export default function PokemonLayout({ children }: PokemonLayoutProps) {
   }, []);
 
   return (
-    <div className={`flex justify-center bg-global-bg-white px-32`}>
+    <div className={`flex justify-center bg-global-bg-white lg:px-32`}>
       <div
         className={`flex min-h-screen w-full max-w-7xl flex-col ${About?.colorClass} `}
       >
@@ -66,12 +66,12 @@ export default function PokemonLayout({ children }: PokemonLayoutProps) {
               <BreadcrumbItem>
                 <BreadcrumbLink
                   href={`/?page=${latestPage}`}
-                  className='text-white'
+                  className='font-semibold text-white'
                 >
                   Pokemon
                 </BreadcrumbLink>
               </BreadcrumbItem>
-              <BreadcrumbSeparator />
+              <BreadcrumbSeparator className='text-black' />
               <BreadcrumbItem>
                 <BreadcrumbPage>{FirstCapital(name as string)}</BreadcrumbPage>
               </BreadcrumbItem>

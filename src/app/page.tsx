@@ -33,7 +33,7 @@ export default function PokemonList() {
   }, [page, router]);
 
   return (
-    <main className='flex justify-center bg-global-bg-white px-32'>
+    <main className='flex justify-center bg-global-bg-white lg:px-10 xl:px-32'>
       <div className='flex min-h-screen w-full max-w-7xl flex-col bg-white bg-global-bg-white p-4'>
         <div className='grid flex-grow gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
           {pokemonDetails?.map((pokemon) => (

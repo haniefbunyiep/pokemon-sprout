@@ -16,7 +16,7 @@ export default function BaseStats() {
   const maxStatValue = 150;
 
   return (
-    <div className='flex w-full flex-col gap-6 p-6'>
+    <div className='flex w-full flex-col gap-6 lg:p-6'>
       {BaseStats?.map((stat) => (
         <div key={stat.name} className='flex items-center gap-4'>
           <span className='w-24 font-medium capitalize'>
