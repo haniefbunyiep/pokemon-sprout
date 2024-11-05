@@ -103,6 +103,7 @@ export default function PokemonLayout({ children }: PokemonLayoutProps) {
             width={450}
             height={450}
             className='absolute -bottom-12 object-contain'
+            loading='lazy'
           />
         </div>
         <div className='flex h-full flex-col gap-4 rounded-t-[24px] border border-white bg-white p-10 text-black'>

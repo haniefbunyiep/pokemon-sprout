@@ -37,6 +37,7 @@ const PokemonCard: React.FC<PokemonData> = ({
           width={150}
           height={150}
           className='object-contain'
+          loading='lazy'
         />
       </div>
     </Card>
