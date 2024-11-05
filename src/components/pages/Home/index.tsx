@@ -19,19 +19,27 @@ export default function PokemonList() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const initialPage =
-    Number(searchParams.get('page')) ||
-    Number(localStorage.getItem('latestPage')) ||
-    1;
-  const [page, setPage] = useState(initialPage);
+  const [page, setPage] = useState(1);
   const limit = 20;
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const savedPage =
+        Number(searchParams.get('page')) ||
+        Number(localStorage.getItem('latestPage')) ||
+        1;
+      setPage(savedPage);
+    }
+  }, [searchParams]);
 
   const { pokemonListData } = useGetPokemonList(page, limit);
   const { pokemonDetails, totalPages = 1 } = pokemonListData || {};
 
   useEffect(() => {
-    router.replace(`?page=${page}`);
-    localStorage.setItem('latestPage', page.toString());
+    if (typeof window !== 'undefined') {
+      router.replace(`?page=${page}`);
+      localStorage.setItem('latestPage', page.toString());
+    }
   }, [page, router]);
 
   return (
@@ -56,21 +64,23 @@ export default function PokemonList() {
             <Button
               onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
               disabled={page === 1}
-              className={`px-4 py-2 ${page === 1 ? 'cursor-not-allowed opacity-50' : ''}`}
+              className={`w-24 px-4 py-2 text-sm sm:text-base ${
+                page === 1 ? 'cursor-not-allowed opacity-50' : ''
+              }`}
             >
               Previous
             </Button>
 
             <PaginationContent className='flex items-center space-x-2'>
               {page > 2 && (
-                <>
+                <div className='hidden sm:flex'>
                   <PaginationItem>
                     <PaginationLink onClick={() => setPage(1)}>
                       1
                     </PaginationLink>
                   </PaginationItem>
                   {page > 3 && <span className='px-2'>...</span>}
-                </>
+                </div>
               )}
 
               {page > 1 && (
@@ -96,21 +106,23 @@ export default function PokemonList() {
               )}
 
               {page < totalPages - 1 && (
-                <>
+                <div className='hidden sm:flex'>
                   {page < totalPages - 2 && <span className='px-2'>...</span>}
                   <PaginationItem>
                     <PaginationLink onClick={() => setPage(totalPages)}>
                       {totalPages}
                     </PaginationLink>
                   </PaginationItem>
-                </>
+                </div>
               )}
             </PaginationContent>
 
             <Button
               onClick={() => setPage((prev) => Math.min(prev + 1, totalPages))}
               disabled={page === totalPages}
-              className={`px-4 py-2 ${page === totalPages ? 'cursor-not-allowed opacity-50' : ''}`}
+              className={`w-24 px-4 py-2 text-sm sm:text-base ${
+                page === totalPages ? 'cursor-not-allowed opacity-50' : ''
+              }`}
             >
               Next
             </Button>
