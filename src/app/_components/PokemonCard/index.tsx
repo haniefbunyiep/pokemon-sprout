@@ -11,29 +11,32 @@ const PokemonCard: React.FC<PokemonData> = ({
   types,
   colorClass,
 }) => {
-  console.log(colorClass);
   return (
-    <Card className={`relative flex h-[300px] gap-4 px-8 py-14 ${colorClass}`}>
-      <div className='flex flex-col gap-5'>
-        <div className='text-center text-xl font-bold capitalize'>{name}</div>
-        <div className='flex flex-col items-center gap-3'>
+    <Card
+      className={`relative flex h-[300px] w-full flex-col items-center justify-between rounded-lg px-4 py-6 shadow-md ${colorClass}`}
+    >
+      <div className='flex flex-col items-center'>
+        <h2 className='mb-2 text-center text-xl font-bold capitalize text-white'>
+          {name}
+        </h2>
+        <div className='flex flex-wrap justify-center gap-2'>
           {types.map((type) => (
             <Badge
               key={type}
-              className={`bg-type-${type.toLowerCase()} flex min-w-[70px] cursor-default items-center justify-center`}
+              className={`bg-type-${type.toLowerCase()} cursor-default rounded-lg px-3 py-1 text-white shadow-sm`}
             >
               {type}
             </Badge>
           ))}
         </div>
       </div>
-      <div className='absolute bottom-5 right-5'>
+      <div className=''>
         <Image
           src={imageUrl}
           alt={name}
           width={150}
           height={150}
-          className='object-cover'
+          className='object-contain'
         />
       </div>
     </Card>

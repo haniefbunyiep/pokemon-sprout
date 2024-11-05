@@ -5,6 +5,7 @@ import TanstackProvider from '@/config/TanstackProvider';
 import Footer from '@/components/template/Footer';
 import Navbar from '@/components/template/Navbar';
 import FullScreenLoader from '@/components/template/FullScreenLoader';
+import AppWrapper from '@/config/AppWrapper';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -21,14 +22,16 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <div className='flex min-h-screen flex-col justify-between bg-global-bg'>
-          <FullScreenLoader />
-          <TanstackProvider>
-            <Navbar />
-            {children}
-            <Footer />
-          </TanstackProvider>
-        </div>
+        <AppWrapper>
+          <div className='flex min-h-screen flex-col justify-between bg-global-bg'>
+            <FullScreenLoader />
+            <TanstackProvider>
+              <Navbar />
+              {children}
+              <Footer />
+            </TanstackProvider>
+          </div>
+        </AppWrapper>
       </body>
     </html>
   );

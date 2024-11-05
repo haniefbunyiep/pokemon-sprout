@@ -1,47 +1,47 @@
 import { useEffect } from 'react';
-import { useGetPokemonListQuery } from '../api/useGetPokemonListQuery';
+import { useGetPokemonDetailQuery } from '../api/useGetPokemonDetailQuery';
 import useStore from '@/zustand';
 
-export const useGetPokemonList = (page: number, limit: number) => {
+export const useGetPokemonDetail = (name: string) => {
   const { setIsLoading, setIsError } = useStore();
   const timeoutDuration = 2000;
 
   const {
-    data: pokemonListData,
-    isLoading: pokemonListLoading,
-    refetch: pokemonListRefetch,
-    status: PokemonListStatus,
-  } = useGetPokemonListQuery(page, limit);
+    data: pokemonDetailData,
+    isLoading: pokemonDetailLoading,
+    status: PokemonDetailStatus,
+    error,
+  } = useGetPokemonDetailQuery(name);
 
   useEffect(() => {
     setIsLoading(true);
     setIsError('pending');
 
     const timeout = setTimeout(() => {
-      if (PokemonListStatus !== 'success') {
+      if (PokemonDetailStatus !== 'success') {
         setIsError('error');
         setIsLoading(false);
         console.error('Request timed out');
       }
     }, timeoutDuration);
 
-    if (PokemonListStatus === 'success') {
+    if (PokemonDetailStatus === 'success') {
       clearTimeout(timeout);
       setIsError('success');
       setIsLoading(false);
-    } else if (PokemonListStatus === 'error') {
+    } else if (PokemonDetailStatus === 'error') {
       clearTimeout(timeout);
       setIsError('error');
       setIsLoading(false);
     }
 
     return () => clearTimeout(timeout);
-  }, [PokemonListStatus, setIsError, setIsLoading, timeoutDuration]);
+  }, [PokemonDetailStatus, setIsError, setIsLoading, timeoutDuration]);
 
   return {
-    pokemonListData,
-    pokemonListLoading,
-    pokemonListRefetch,
-    PokemonListStatus,
+    pokemonDetailData,
+    pokemonDetailLoading,
+    PokemonDetailStatus,
+    error,
   };
 };
