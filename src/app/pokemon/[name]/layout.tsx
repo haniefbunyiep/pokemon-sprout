@@ -81,7 +81,7 @@ export default function PokemonLayout({ children }: PokemonLayoutProps) {
             #{About?.id?.toString().padStart(4, '0') || '0001'}
           </div>
           <div>{FirstCapital(name as string)}</div>
-          <div>
+          <div className='flex items-center gap-2'>
             {About?.types?.map((type) => (
               <Badge
                 key={type}
