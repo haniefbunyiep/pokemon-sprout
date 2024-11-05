@@ -2,15 +2,23 @@
 
 import Loading from '../Loading';
 import useStore from '@/zustand';
+import ErrorService from '../ErrorService';
 
 const FullScreenLoader = () => {
-  const { loading } = useStore();
+  const { loading, error } = useStore();
 
-  console.log(loading);
   if (loading === true) {
     return (
       <div className='fixed inset-0 z-50 flex h-screen items-center justify-center bg-white'>
         <Loading />
+      </div>
+    );
+  }
+
+  if (error === 'error') {
+    return (
+      <div className='fixed inset-0 z-50 flex h-screen items-center justify-center bg-white'>
+        <ErrorService />
       </div>
     );
   }

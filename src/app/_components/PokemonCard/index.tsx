@@ -4,32 +4,37 @@ import Image from 'next/image';
 import { PokemonData } from '@/services/pokemon/api/useGetPokemonListQuery';
 import { Badge } from '@/components/ui/badge';
 
-const PokemonCard: React.FC<PokemonData> = ({ id, name, imageUrl, types }) => {
+const PokemonCard: React.FC<PokemonData> = ({
+  id,
+  name,
+  imageUrl,
+  types,
+  colorClass,
+}) => {
+  console.log(colorClass);
   return (
-    <Card className='flex h-[450px] flex-col justify-between rounded-lg bg-white p-4 text-gray-800 shadow-md'>
-      <div className='flex flex-col items-center'>
-        <p className='mb-1 text-sm text-gray-500'>
-          #{id.toString().padStart(4, '0')}
-        </p>
-        <div className='flex h-[300px] w-full items-center justify-center bg-slate-100'>
-          <Image
-            src={imageUrl}
-            alt={name}
-            width={150}
-            height={150}
-            className='object-cover'
-          />
+    <Card className={`relative flex h-[300px] gap-4 px-8 py-14 ${colorClass}`}>
+      <div className='flex flex-col gap-5'>
+        <div className='text-center text-xl font-bold capitalize'>{name}</div>
+        <div className='flex flex-col items-center gap-3'>
+          {types.map((type) => (
+            <Badge
+              key={type}
+              className={`bg-type-${type.toLowerCase()} flex min-w-[70px] cursor-default items-center justify-center`}
+            >
+              {type}
+            </Badge>
+          ))}
         </div>
-        <h3 className='mt-2 text-center text-xl font-bold capitalize'>
-          {name}
-        </h3>
       </div>
-      <div className='mt-2 flex justify-center space-x-2'>
-        {types.map((type) => (
-          <Badge key={type} className={`bg-type-${type.toLowerCase()}`}>
-            {type}
-          </Badge>
-        ))}
+      <div className='absolute bottom-5 right-5'>
+        <Image
+          src={imageUrl}
+          alt={name}
+          width={150}
+          height={150}
+          className='object-cover'
+        />
       </div>
     </Card>
   );

@@ -10,10 +10,11 @@ export const useGetPokemonList = (page: number, limit: number) => {
     status: PokemonListStatus,
   } = useGetPokemonListQuery(page, limit);
 
-  const { setIsLoading } = useStore();
+  const { setIsLoading, setIsError } = useStore();
 
   useEffect(() => {
     setIsLoading(pokemonListLoading);
+    setIsError(PokemonListStatus);
   }, [pokemonListLoading, setIsLoading]);
 
   return {

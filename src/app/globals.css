@@ -146,6 +146,168 @@
   @apply bg-red-800 text-red-50;
 }
 
+/* Grass Type */
+.pokemon-bg-grass {
+  @apply bg-green-400 text-green-50;
+}
+
+.pokemon-bg-grass:hover {
+  @apply bg-green-300 text-green-100;
+}
+
+/* Poison Type */
+.pokemon-bg-poison {
+  @apply bg-purple-400 text-purple-50;
+}
+
+.pokemon-bg-poison:hover {
+  @apply bg-purple-300 text-purple-100;
+}
+
+/* Fire Type */
+.pokemon-bg-fire {
+  @apply bg-red-400 text-red-50;
+}
+
+.pokemon-bg-fire:hover {
+  @apply bg-red-300 text-red-100;
+}
+
+/* Water Type */
+.pokemon-bg-water {
+  @apply bg-blue-400 text-blue-50;
+}
+
+.pokemon-bg-water:hover {
+  @apply bg-blue-300 text-blue-100;
+}
+
+/* Bug Type */
+.pokemon-bg-bug {
+  @apply bg-lime-400 text-lime-50;
+}
+
+.pokemon-bg-bug:hover {
+  @apply bg-lime-300 text-lime-100;
+}
+
+/* Flying Type */
+.pokemon-bg-flying {
+  @apply bg-sky-400 text-sky-50;
+}
+
+.pokemon-bg-flying:hover {
+  @apply bg-sky-300 text-sky-100;
+}
+
+/* Normal Type */
+.pokemon-bg-normal {
+  @apply bg-gray-400 text-gray-50;
+}
+
+.pokemon-bg-normal:hover {
+  @apply bg-gray-300 text-gray-100;
+}
+
+/* Electric Type */
+.pokemon-bg-electric {
+  @apply bg-yellow-400 text-yellow-50;
+}
+
+.pokemon-bg-electric:hover {
+  @apply bg-yellow-300 text-yellow-100;
+}
+
+/* Ground Type */
+.pokemon-bg-ground {
+  @apply bg-yellow-600 text-yellow-50;
+}
+
+.pokemon-bg-ground:hover {
+  @apply bg-yellow-300 text-yellow-100;
+}
+
+/* Rock Type */
+.pokemon-bg-rock {
+  @apply bg-yellow-700 text-yellow-50;
+}
+
+.pokemon-bg-rock:hover {
+  @apply bg-yellow-300 text-yellow-100;
+}
+
+/* Psychic Type */
+.pokemon-bg-psychic {
+  @apply bg-pink-400 text-pink-50;
+}
+
+.pokemon-bg-psychic:hover {
+  @apply bg-pink-300 text-pink-100;
+}
+
+/* Ice Type */
+.pokemon-bg-ice {
+  @apply bg-cyan-200 text-cyan-800;
+}
+
+.pokemon-bg-ice:hover {
+  @apply bg-cyan-300 text-cyan-900;
+}
+
+/* Dragon Type */
+.pokemon-bg-dragon {
+  @apply bg-indigo-500 text-indigo-50;
+}
+
+.pokemon-bg-dragon:hover {
+  @apply bg-indigo-300 text-indigo-100;
+}
+
+/* Dark Type */
+.pokemon-bg-dark {
+  @apply bg-gray-700 text-gray-50;
+}
+
+.pokemon-bg-dark:hover {
+  @apply bg-gray-300 text-gray-100;
+}
+
+/* Fairy Type */
+.pokemon-bg-fairy {
+  @apply bg-pink-200 text-pink-700;
+}
+
+.pokemon-bg-fairy:hover {
+  @apply bg-pink-300 text-pink-800;
+}
+
+/* Steel Type */
+.pokemon-bg-steel {
+  @apply bg-gray-300 text-gray-800;
+}
+
+.pokemon-bg-steel:hover {
+  @apply bg-gray-300 text-gray-900;
+}
+
+/* Ghost Type */
+.pokemon-bg-ghost {
+  @apply bg-purple-600 text-purple-50;
+}
+
+.pokemon-bg-ghost:hover {
+  @apply bg-purple-300 text-purple-100;
+}
+
+/* Fighting Type */
+.pokemon-bg-fighting {
+  @apply bg-red-600 text-red-50;
+}
+
+.pokemon-bg-fighting:hover {
+  @apply bg-red-300 text-red-100;
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;

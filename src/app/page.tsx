@@ -1,10 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useGetPokemonList } from '@/services/pokemon/hooks/useGetPokemonList';
 import PokemonCard from './_components/PokemonCard';
-import Loading from '@/components/template/Loading';
-import ErrorService from '@/components/template/ErrorService';
 import {
   Pagination,
   PaginationContent,
@@ -14,16 +13,19 @@ import {
 import { Button } from '@/components/ui/button';
 
 export default function PokemonList() {
-  const [page, setPage] = useState(1);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const initialPage = Number(searchParams.get('page')) || 1;
+  const [page, setPage] = useState(initialPage);
   const limit = 20;
 
-  const { pokemonListData, pokemonListLoading, PokemonListStatus } =
-    useGetPokemonList(page, limit);
-
-  if (pokemonListLoading) return <Loading />;
-  if (PokemonListStatus === 'error') return <ErrorService />;
-
+  const { pokemonListData } = useGetPokemonList(page, limit);
   const { pokemonDetails, totalPages = 1 } = pokemonListData || {};
+
+  useEffect(() => {
+    router.replace(`?page=${page}`);
+  }, [page, router]);
 
   return (
     <main className='flex justify-center bg-global-bg-white px-32'>
@@ -36,6 +38,7 @@ export default function PokemonList() {
               name={pokemon.name}
               imageUrl={pokemon.imageUrl}
               types={pokemon.types}
+              colorClass={pokemon.colorClass}
             />
           ))}
         </div>

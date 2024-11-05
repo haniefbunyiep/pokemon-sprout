@@ -18,6 +18,7 @@ export interface PokemonData {
   name: string;
   imageUrl: string;
   types: string[];
+  colorClass: string; // Add colorClass to define the CSS class
 }
 
 interface PokemonListResponse {
@@ -38,11 +39,16 @@ const fetchPokemonDetails = async (
   const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png`;
   const types = data.types.map((typeInfo: PokemonType) => typeInfo.type.name);
 
+  // Determine the primary type and corresponding CSS class
+  const primaryType = types[0].toLowerCase();
+  const colorClass = `pokemon-bg-${primaryType}`;
+
   return {
     id: data.id,
     name: data.name,
     imageUrl,
     types,
+    colorClass, // Use CSS class instead of hex color
   };
 };
 
