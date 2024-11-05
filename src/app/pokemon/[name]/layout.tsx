@@ -102,16 +102,22 @@ export default function PokemonLayout({ children }: PokemonLayoutProps) {
             alt={About?.name || 'Pokemon Image'}
             width={450}
             height={450}
-            className='absolute -bottom-16 object-contain'
+            className='absolute -bottom-12 object-contain'
           />
         </div>
         <div className='flex h-full flex-col gap-4 rounded-t-[24px] border border-white bg-white p-10 text-black'>
           <div className='flex items-center justify-center gap-14'>
             {navContent.map((content) => (
-              <Link href={content.url} key={content.name}>
+              <Link
+                href={content.url}
+                key={content.name}
+                className='underline-offset-2 hover:underline'
+              >
                 <div
                   className={`${
-                    pathname === content.url ? 'text-black' : 'text-slate-400'
+                    pathname === content.url
+                      ? 'text-black underline underline-offset-2'
+                      : 'text-slate-400'
                   }`}
                 >
                   {content.name}
